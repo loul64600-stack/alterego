@@ -1,9 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>Test</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Altérego</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#1c1610;color:#e8ddd0;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 36px;border-bottom:1px solid #2e2418;position:sticky;top:0;z-index:100;background:#1c1610;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:10px;color:#d4c4a0;}
+.nav-links{display:flex;gap:24px;}
+.nav-links span{font-size:10px;letter-spacing:3px;color:#6e5e48;cursor:pointer;text-transform:uppercase;transition:color .2s;}
+.nav-links span:hover{color:#d4c4a0;}
+.hero{position:relative;padding:70px 36px 56px;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#1c1610;}
+.hero-tag{font-size:10px;letter-spacing:5px;color:#7a6848;text-transform:uppercase;margin-bottom:16px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;line-height:.88;color:#e8ddd0;margin-bottom:20px;}
+.hero-title em{font-style:italic;color:#a88c5c;}
+.hero-sub{font-size:12px;color:#6e5e48;line-height:1.9;max-width:340px;margin-bottom:36px;}
+.hero-cta{display:flex;gap:20px;align-items:center;}
+.btn-p{font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:13px 30px;background:#a88c5c;color:#1c1610;border:none;cursor:pointer;}
+.btn-p:hover{background:#c4a870;}
+.btn-g{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#6e5e48;cursor:pointer;border-bottom:1px solid #3a2e1c;padding-bottom:2px;}
+.manifesto{padding:48px 36px;display:grid;grid-template-columns:150px 1fr;gap:40px;align-items:center;border-top:1px solid #2e2418;border-bottom:1px solid #2e2418;}
+.mf-label{font-size:10px;letter-spacing:4px;color:#4a3e2c;text-transform:uppercase;line-height:2;}
+.mf-quote{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;font-style:italic;color:#b8a882;line-height:1.55;}
+.mf-quote span{color:#e8ddd0;font-style:normal;}
+.section{padding:48px 36px;}
+.dark{background:#161208;}
+.darker{background:#141008;}
+.stag{font-size:10px;letter-spacing:5px;color:#4a3e2c;text-transform:uppercase;margin-bottom:8px;}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;font-style:italic;color:#c8b890;margin-bottom:28px;}
+.snote{font-size:11px;color:#5a4e38;margin-bottom:24px;margin-top:-18px;font-style:italic;}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:#2e2418;margin-bottom:2px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#2e2418;}
+.icard{background:#161208;cursor:pointer;overflow:hidden;}
+.icard:hover .iovl{opacity:1;}
+.icard:hover .iphoto{transform:scale(1.04);}
+.iphoto-wrap{position:relative;overflow:hidden;}
+.iphoto{width:100%;height:240px;object-fit:cover;object-position:top;display:block;transition:transform .4s;}
+.iovl{position:absolute;inset:0;background:rgba(20,16,8,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.obtn{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#d4c4a0;border:1px solid #6e5e48;padding:8px 20px;background:transparent;cursor:pointer;}
+.iinfo{padding:14px 16px;border-top:1px solid #2e2418;}
+.ibadge{display:inline-block;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:2px 8px;border:1px solid #3a2e1c;color:#6e5e48;margin-bottom:6px;}
+.ibadge.ac{border-color:#5a4a6e;color:#9a80be;}
+.iname{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:#c8b890;margin-bottom:3px;}
+.idesc{font-size:10px;color:#5a4e38;line-height:1.6;}
+.iprice{font-size:10px;color:#a88c5c;margin-top:6px;letter-spacing:2px;}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2e2418;}
+.val{background:#141008;padding:28px 18px;}
+.valn{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#2e2418;margin-bottom:12px;}
+.valt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#a88c5c;margin-bottom:6px;}
+.vald{font-size:11px;color:#4a3e2c;line-height:1.7;}
+.questionnaire{padding:48px 36px;background:#1c1610;}
+.qtag{font-size:10px;letter-spacing:5px;color:#4a3e2c;text-transform:uppercase;margin-bottom:8px;}
+.qtitle{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;color:#b8a882;margin-bottom:28px;}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.qblock{background:#141008;border:1px solid #2e2418;padding:16px;}
+.qq{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6e5e48;margin-bottom:8px;}
+.qopts{display:flex;flex-wrap:wrap;gap:6px;}
+.qopt{font-size:10px;padding:5px 12px;border:1px solid #2e2418;color:#4a3e2c;cursor:pointer;transition:all .2s;}
+.qopt:hover,.qopt.sel{border-color:#a88c5c;color:#a88c5c;}
+.qfull{background:#141008;border:1px solid #2e2418;padding:16px;margin-bottom:14px;}
+.qstory{width:100%;background:transparent;border:none;color:#c8b890;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;resize:none;outline:none;min-height:100px;line-height:1.8;}
+.qstory::placeholder{color:#2e2418;}
+.bforge{width:100%;padding:15px;font-size:10px;letter-spacing:5px;text-transform:uppercase;background:#a88c5c;color:#1c1610;border:none;cursor:pointer;}
+.bforge:hover{background:#c4a870;}
+.err{font-size:11px;color:#8a5040;margin-top:10px;display:none;}
+.err.show{display:block;}
+.loading{display:none;padding:48px 36px;text-align:center;background:#1c1610;}
+.loading.show{display:block;}
+.lring{width:44px;height:44px;border:1px solid #2e2418;border-top-color:#a88c5c;border-radius:50%;margin:0 auto 20px;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.lpatch{display:flex;justify-content:center;gap:14px;margin-bottom:20px;}
+.lp{width:28px;height:28px;border:1px solid #2e2418;display:flex;align-items:center;justify-content:center;font-size:13px;color:#a88c5c;animation:fup 2s ease-in-out infinite;}
+@keyframes fup{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.ltxt{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#4a3e2c;}
+.result{display:none;padding:48px 36px;background:#141008;}
+.result.show{display:block;}
+.rtag{font-size:10px;letter-spacing:5px;color:#4a3e2c;text-transform:uppercase;margin-bottom:6px;}
+.rname{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;font-style:italic;color:#a88c5c;}
+.ressence{font-size:12px;color:#6e5e48;line-height:1.9;max-width:460px;margin-top:10px;font-style:italic;padding-left:14px;border-left:1px solid #3a2e1c;}
+.themes{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap;margin-bottom:24px;}
+.theme{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border:1px solid #2e2418;color:#4a3e2c;}
+.rgrid{display:grid;grid-template-columns:220px 1fr;gap:36px;}
+.rjw{background:#1a1410;border:1px solid #2e2418;padding:18px;display:flex;align-items:center;justify-content:center;}
+.prow{border-bottom:1px solid #1e1810;padding:14px 0;display:flex;align-items:flex-start;gap:14px;animation:fin .5s ease both;}
+@keyframes fin{from{opacity:0;transform:translateX(10px);}to{opacity:1;transform:translateX(0);}}
+.psym{width:32px;height:32px;border:1px solid #2e2418;display:flex;align-items:center;justify-content:center;font-size:14px;color:#a88c5c;flex-shrink:0;}
+.pnm{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#a88c5c;margin-bottom:3px;}
+.pds{font-size:11px;color:#4a3e2c;line-height:1.6;}
+.brst{margin-top:24px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4a3e2c;background:transparent;border:none;cursor:pointer;border-bottom:1px solid #2e2418;padding-bottom:2px;}
+.brst:hover{color:#a88c5c;}
+footer{padding:32px 36px;border-top:1px solid #2e2418;display:flex;justify-content:space-between;background:#141008;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;letter-spacing:8px;color:#4a3e2c;}
+.footer-text{font-size:10px;color:#3a2e1c;letter-spacing:2px;}
+</style>
 </head>
 <body>
-<h1>Ca marche !</h1>
+<nav>
+  <div class="logo">ALTÉREGO</div>
+  <div class="nav-links">
+    <span onclick="document.getElementById('vestes').scrollIntoView({behavior:'smooth'})">Vestes</span>
+    <span onclick="document.getElementById('accessoires').scrollIntoView({behavior:'smooth'})">Accessoires</span>
+    <span onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Créer</span>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-tag">Séries limitées — Cuir &amp; Daim — Upcycling</div>
+  <div class="hero-title">Le vêtement<br>qui <em>évolue</em><br>avec toi</div>
+  <div class="hero-sub">Des vestes mixtes modulables, réparables, personnalisées. Les chutes deviennent sacs et shorts.</div>
+  <div class="hero-cta">
+    <button class="btn-p" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Créer ma pièce</button>
+    <span class="btn-g" onclick="document.getElementById('vestes').scrollIntoView({behavior:'smooth'})">Voir la collection</span>
+  </div>
+</div>
+<div class="manifesto">
+  <div class="mf-label">— Ce en quoi<br>nous croyons</div>
+  <div class="mf-quote">Un vêtement ne devrait pas être <span>remplacé</span>, il devrait <span>évoluer</span>. Chaque trace est une <span>mémoire</span>.</div>
+</div>
+<div class="section dark" id="vestes">
+  <div class="stag">— Vestes &amp; Manteaux</div>
+  <div class="stitle">La pièce maîtresse</div>
+  <div class="grid5">
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.03.39.png" alt="veste1"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Daim — Vierge</span><div class="iname">La Frangée Brune</div><div class="idesc">Daim brun, col tailleur, franges. Icon western revisité.</div><div class="iprice">À partir de 420 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.03.48.png" alt="veste2"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Daim — Vierge</span><div class="iname">Le Bomber Sable</div><div class="idesc">Daim naturel beige, col montant zip, bomber structuré.</div><div class="iprice">À partir de 380 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.03.55.png" alt="veste3"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Cuir — Vierge</span><div class="iname">La Lacée Brun</div><div class="idesc">Cuir brun, col croisé, lacets latéraux ajustables.</div><div class="iprice">À partir de 460 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.04.04.png" alt="veste4"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Daim — Vierge</span><div class="iname">La Marbrée Grise</div><div class="idesc">Daim marbré gris-beige, col oversize, manches bouffantes.</div><div class="iprice">À partir de 490 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.04.15.png" alt="veste5"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Suède — Vierge</span><div class="iname">Le Kaki Military</div><div class="idesc">Suède vert kaki foncé, col militaire, poches cargo.</div><div class="iprice">À partir de 440 €</div></div></div>
+  </div>
+  <div class="grid5">
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.05.10.png" alt="veste6"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Coton — Vierge</span><div class="iname">La Kaki Nouée</div><div class="idesc">Coton kaki, nœud col, épaules structurées, oversize.</div><div class="iprice">À partir de 280 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.05.18.png" alt="veste7"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Denim — Vierge</span><div class="iname">Le Denim Déconstruit</div><div class="idesc">Jean délavé déconstruit, patchwork de matières.</div><div class="iprice">À partir de 320 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.05.26.png" alt="veste8"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Cuir — Vierge</span><div class="iname">Le Col Tailleur Brun</div><div class="idesc">Cuir brun vieilli, col tailleur large, grandes poches.</div><div class="iprice">À partir de 500 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.05.33.png" alt="veste9"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Cuir — Vierge</span><div class="iname">La Noire Oversize</div><div class="idesc">Cuir noir, col double, manches bouffantes ceinturées.</div><div class="iprice">À partir de 520 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.05.44.png" alt="veste10"/><div class="iovl"><button class="obtn" onclick="document.getElementById('creer').scrollIntoView({behavior:'smooth'})">Personnaliser</button></div></div><div class="iinfo"><span class="ibadge">Cuir — Vierge</span><div class="iname">La Maya Olive</div><div class="idesc">Cuir olive brun, col boutonné asymétrique, zip latéral.</div><div class="iprice">À partir de 480 €</div></div></div>
+  </div>
+</div>
+<div class="section" id="accessoires">
+  <div class="stag">— Accessoires &amp; Pièces Secondaires</div>
+  <div class="stitle">Nés des chutes</div>
+  <div class="snote">Fabriqués à partir des chutes de cuir et daim des vestes. Rien ne disparaît.</div>
+  <div class="grid4">
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-27 à 08.36.55.png" alt="sac1"/><div class="iovl"><button class="obtn">Commander</button></div></div><div class="iinfo"><span class="ibadge ac">Sac — Upcycling</span><div class="iname">Le Hobo Frangé</div><div class="idesc">Cuir noir, franges cloutées dorées.</div><div class="iprice">180 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-27 à 08.37.03.png" alt="sac2"/><div class="iovl"><button class="obtn">Commander</button></div></div><div class="iinfo"><span class="ibadge ac">Sac — Upcycling</span><div class="iname">Le Hobo Nomade</div><div class="idesc">Daim naturel, pièces de monnaie, breloques.</div><div class="iprice">160 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.06.52.png" alt="short1"/><div class="iovl"><button class="obtn">Commander</button></div></div><div class="iinfo"><span class="ibadge ac">Short — Upcycling</span><div class="iname">Le Cargo Vieilli</div><div class="idesc">Cuir brun vieilli, taille basse, poches cargo.</div><div class="iprice">220 €</div></div></div>
+    <div class="icard"><div class="iphoto-wrap"><img class="iphoto" src="Capture d'écran 2026-04-28 à 09.06.56.png" alt="short2"/><div class="iovl"><button class="obtn">Commander</button></div></div><div class="iinfo"><span class="ibadge ac">Short — Upcycling</span><div class="iname">Le Clouté Brut</div><div class="idesc">Cuir noir, clous pyramidaux sur toute la surface.</div><div class="iprice">240 €</div></div></div>
+  </div>
+</div>
+<div class="section darker">
+  <div class="values">
+    <div class="val"><div class="valn">01</div><div class="valt">Durabilité</div><div class="vald">Cuir, daim, denim. Des matières qui traversent les années.</div></div>
+    <div class="val"><div class="valn">02</div><div class="valt">Transformation</div><div class="vald">Manches, cols, longueurs. Tout est modulable selon tes envies.</div></div>
+    <div class="val"><div class="valn">03</div><div class="valt">Individualité</div><div class="vald">Broderies, patchs, peinture. Ta pièce raconte ton histoire.</div></div>
+    <div class="val"><div class="valn">04</div><div class="valt">Circularité</div><div class="vald">Les chutes deviennent sacs, shorts, accessoires.</div></div>
+  </div>
+</div>
+<div class="questionnaire" id="creer">
+  <div class="qtag">— Créer ma pièce</div>
+  <div class="qtitle">Dis-nous qui tu es</div>
+  <div class="qgrid">
+    <div class="qblock"><div class="qq">Matière</div><div class="qopts"><span class="qopt sel" onclick="this.classList.toggle('sel')">Cuir</span><span class="qopt" onclick="this.classList.toggle('sel')">Daim</span><span class="qopt" onclick="this.classList.toggle('sel')">Denim</span><span class="qopt" onclick="this.classList.toggle('sel')">Suède</span></div></div>
+    <div class="qblock"><div class="qq">Silhouette</div><div class="qopts"><span class="qopt sel" onclick="this.classList.toggle('sel')">Bomber</span><span class="qopt" onclick="this.classList.toggle('sel')">Oversize</span><span class="qopt" onclick="this.classList.toggle('sel')">Col tailleur</span><span class="qopt" onclick="this.classList.toggle('sel')">Military</span></div></div>
+    <div class="qblock"><div class="qq">Personnalisation</div><div class="qopts"><span class="qopt sel" onclick="this.classList.toggle('sel')">Patchs</span><span class="qopt sel" onclick="this.classList.toggle('sel')">Broderies</span><span class="qopt" onclick="this.classList.toggle('sel')">Peinture</span><span class="qopt" onclick="this.classList.toggle('sel')">Franges</span></div></div>
+    <div class="qblock"><div class="qq">Ce qui compte</div><div class="qopts"><span class="qopt" onclick="this.classList.toggle('sel')">Expression</span><span class="qopt sel" onclick="this.classList.toggle('sel')">Durabilité</span><span class="qopt" onclick="this.classList.toggle('sel')">Singularité</span></div></div>
+  </div>
+  <div class="qfull"><div class="qq">Ton histoire</div><textarea class="qstory" id="si" placeholder="Parle-nous de toi, d'un voyage, d'une passion..." maxlength="600"></textarea></div>
+  <div class="err" id="em">Erreur de connexion.</div>
+  <button class="bforge" onclick="forge()">⚡ Forger ma pièce unique</button>
+</div>
+<div class="loading" id="lo">
+  <div class="lring"></div>
+  <div class="lpatch"><div class="lp" style="animation-delay:0s">◈</div><div class="lp" style="animation-delay:.3s">✦</div><div class="lp" style="animation-delay:.6s">◆</div><div class="lp" style="animation-delay:.9s">◇</div><div class="lp" style="animation-delay:1.2s">❖</div></div>
+  <div class="ltxt" id="lt">Analyse de ton histoire...</div>
+</div>
+<div class="result" id="res">
+  <div class="rtag">— Ta pièce Altérego</div>
+  <div class="rname" id="rn"></div>
+  <div class="ressence" id="re"></div>
+  <div class="themes" id="th"></div>
+  <div class="rgrid">
+    <div class="rjw"><svg id="rs" width="180" height="210" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div id="pl"></div>
+  </div>
+  <button class="brst" onclick="restart()">← Nouvelle histoire</button>
+</div>
+<footer>
+  <div class="footer-logo">ALTÉREGO</div>
+  <div class="footer-text">Séries limitées — Cuir &amp; Daim — Paris</div>
+</footer>
+<script>
+const PC=['#6b5a38','#3d5c3a','#5a3d3d','#3d4a5c','#5c4a2a','#3a4a38','#6a4830'];
+const LM=['Analyse de ton histoire...','Sélection des symboles...','Broderie des patchs...','Finitions à la main...'];
+let lt2;
+async function forge(){
+  const story=document.getElementById('si').value.trim();
+  if(story.length<20){document.getElementById('si').style.border='1px solid #8a5040';setTimeout(()=>document.getElementById('si').style.border='',1500);return;}
+  document.getElementById('em').classList.remove('show');
+  document.querySelector('.questionnaire').style.display='none';
+  const lo=document.getElementById('lo');lo.classList.add('show');
+  let mi=0;const lt=document.getElementById('lt');
+  lt2=setInterval(()=>{mi=(mi+1)%LM.length;lt.textContent=LM[mi];},1800);
+  try{
+    const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({story:story})});
+    const data=await res.json();
+    clearInterval(lt2);lo.classList.remove('show');renderResult(data);
+  }catch(e){
+    clearInterval(lt2);lo.classList.remove('show');
+    document.querySelector('.questionnaire').style.display='block';
+    document.getElementById('em').classList.add('show');
+  }
+}
+function renderResult(d){
+  document.getElementById('rn').textContent=d.piece_name||'Ma pièce';
+  document.getElementById('re').textContent=d.essence||'';
+  document.getElementById('th').innerHTML=(d.themes||[]).map(t=>`<span class="theme">${t}</span>`).join('');
+  const pl=document.getElementById('pl');pl.innerHTML='';
+  (d.patches||[]).forEach((p,i)=>{
+    const div=document.createElement('div');div.className='prow';div.style.animationDelay=`${i*.12}s`;
+    div.innerHTML=`<div class="psym">${p.symbol||'◈'}</div><div><div class="pnm">${p.name}</div><div class="pds">${p.description}</div></div>`;
+    pl.appendChild(div);
+  });
+  const svg=document.getElementById('rs');
+  const pos=[{x:62,y:82},{x:138,y:76},{x:56,y:116},{x:144,y:110},{x:100,y:144},{x:66,y:152},{x:134,y:152}];
+  let ps='';
+  (d.patches||[]).slice(0,7).forEach((p,i)=>{
+    const col=PC[i%PC.length];const s=p.symbol||'◈';
+    ps+=`<circle cx="${pos[i].x}" cy="${pos[i].y}" r="13" fill="${col}" opacity=".95"/><circle cx="${pos[i].x}" cy="${pos[i].y}" r="11" fill="${col}" stroke="#c8b890" stroke-width=".8"/><text x="${pos[i].x}" y="${pos[i].y+5}" text-anchor="middle" font-size="10" fill="#f0dcc0" font-family="serif">${s}</text>`;
+  });
+  svg.innerHTML=`<path d="M30,50 L10,92 L18,202 L76,212 L76,160 L100,153 L124,160 L124,212 L182,202 L190,92 L170,50 L142,38 L130,26 L118,20 L113,44 L100,55 L87,44 L82,20 L70,26 L58,38 Z" fill="#3a2e1c" stroke="#5a4a30" stroke-width="1.2"/><path d="M100,55 L100,212" stroke="#4a3c28" stroke-width=".8" stroke-dasharray="3,5" opacity=".5"/><path d="M70,26 L58,38 L30,50 L36,57 L64,46 L82,28 Z" fill="#4a3c28" opacity=".8"/><path d="M130,26 L142,38 L170,50 L164,57 L136,46 L118,28 Z" fill="#4a3c28" opacity=".8"/>${ps}`;
+  document.getElementById('res').classList.add('show');
+  document.getElementById('res').scrollIntoView({behavior:'smooth'});
+}
+function restart(){
+  document.getElementById('res').classList.remove('show');
+  document.querySelector('.questionnaire').style.display='block';
+  document.getElementById('si').value='';
+  document.getElementById('em').classList.remove('show');
+  document.getElementById('creer').scrollIntoView({behavior:'smooth'});
+}
+</script>
 </body>
 </html>
